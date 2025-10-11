@@ -1,6 +1,10 @@
 import sys
 from PyQt6.QtWidgets import QApplication, QMainWindow
 
+# Asegúrate de que la ruta de importación sea correcta para tu estructura de proyecto.
+# Si 'generated' está en la misma carpeta que este script, la importación sería:
+# from Ui_main_window import Ui_MainWindow
+# Como la tienes, parece que estás ejecutando desde una carpeta superior.
 from ..generated.Ui_main_window import Ui_MainWindow
 
 class FinancialTerminalApp(QMainWindow):
@@ -13,7 +17,10 @@ class FinancialTerminalApp(QMainWindow):
         # 2. Carga la interfaz en la ventana actual (self)
         self.ui.setupUi(self)
         
-        style_sheet_path = "..assets/styles/style.qss"
+        # --- NUEVO: Cargar la hoja de estilo externa ---
+        # Ruta al archivo QSS. Usamos 'r' para tratarla como una cadena sin procesar
+        # y evitar problemas con las barras invertidas '\'.
+        style_sheet_path = r"C:\Users\clarb\OneDrive\Escritorio\FinCore\FinCore\assets\styles\styles.qss"
         self.load_style_sheet(style_sheet_path)
         
         # 3. Puedes añadir personalizaciones adicionales aquí
