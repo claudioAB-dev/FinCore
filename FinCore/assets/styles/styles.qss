@@ -1,50 +1,144 @@
-import sys
-from PyQt6.QtWidgets import QApplication, QMainWindow
+/*
+ * === HOJA DE ESTILO QSS PARA APLICACIÓN FINANCIERA ===
+ * Tema: Oscuro Moderno
+ */
 
-# Asegúrate de que la ruta de importación sea correcta para tu estructura de proyecto.
-# Si 'generated' está en la misma carpeta que este script, la importación sería:
-# from Ui_main_window import Ui_MainWindow
-# Como la tienes, parece que estás ejecutando desde una carpeta superior.
-from ..generated.Ui_main_window import Ui_MainWindow
+/* === ESTILOS GENERALES === */
+QWidget {
+    /* Fuente por defecto para toda la aplicación */
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 11pt;
+}
 
-class FinancialTerminalApp(QMainWindow):
-    def __init__(self):
-        super().__init__()
+/* Estilo para la ventana principal y el widget central */
+QMainWindow, #centralwidget {
+    background-color: #2c3e50; /* Azul oscuro/grisáceo */
+}
 
-        # 1. Crea una instancia de la UI generada
-        self.ui = Ui_MainWindow()
-        
-        # 2. Carga la interfaz en la ventana actual (self)
-        self.ui.setupUi(self)
-        
-        # --- NUEVO: Cargar la hoja de estilo externa ---
-        # Ruta al archivo QSS. Usamos 'r' para tratarla como una cadena sin procesar
-        # y evitar problemas con las barras invertidas '\'.
-        style_sheet_path = r"C:\Users\clarb\OneDrive\Escritorio\FinCore\FinCore\assets\styles\styles.qss"
-        self.load_style_sheet(style_sheet_path)
-        
-        # 3. Puedes añadir personalizaciones adicionales aquí
-        self.setWindowTitle("FinCore Terminal")
+/* === BARRA DE MENÚ Y ESTADO === */
+QMenuBar {
+    background-color: #34495e; /* Un poco más claro que el fondo */
+    color: #ecf0f1; /* Texto casi blanco */
+    border-bottom: 1px solid #2c3e50;
+}
 
+QMenuBar::item {
+    background-color: transparent;
+    padding: 5px 10px;
+}
 
-    def load_style_sheet(self, path):
-        """
-        Carga una hoja de estilo QSS desde un archivo y la aplica a la aplicación.
-        """
-        try:
-            with open(path, "r") as f:
-                style_sheet = f.read()
-                self.setStyleSheet(style_sheet)
-                print(f"Hoja de estilo cargada exitosamente desde: {path}")
-        except FileNotFoundError:
-            print(f"Error: No se pudo encontrar el archivo de estilos en '{path}'.")
-        except Exception as e:
-            print(f"Ocurrió un error al cargar los estilos: {e}")
+QMenuBar::item:selected, QMenuBar::item:hover {
+    background-color: #4a627a; /* Resaltado al seleccionar/pasar el ratón */
+}
 
-# --- Punto de entrada para ejecutar la aplicación ---
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    window = FinancialTerminalApp()
-    window.show()
-    sys.exit(app.exec())
+QStatusBar {
+    background-color: #34495e;
+    color: #bdc3c7; /* Texto un poco más gris */
+}
 
+/* === WIDGETS DE ENTRADA Y TEXTO === */
+QLabel {
+    color: #ecf0f1; /* Texto casi blanco */
+    padding-left: 5px; /* Pequeño espacio a la izquierda */
+}
+
+/* Etiqueta específica para la búsqueda */
+#searchLabel {
+    font-weight: bold;
+}
+
+QLineEdit {
+    background-color: #34495e;
+    color: #ecf0f1;
+    border: 1px solid #4a627a;
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 8px;
+}
+
+QLineEdit:focus {
+    border: 1px solid #3498db; /* Borde azul al estar seleccionado */
+}
+
+/* El widget de texto en la parte superior */
+#textBrowser {
+    background-color: #34495e;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 12pt;
+    font-weight: bold;
+    text-align: center; /* Centrar texto si es posible */
+}
+
+/* === ÁREAS DE SCROLL === */
+QScrollArea {
+    border: none; /* Sin borde para una integración limpia */
+}
+
+QScrollBar:vertical {
+    border: none;
+    background-color: #2c3e50;
+    width: 10px;
+    margin: 0px 0px 0px 0px;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #5d8aa8; /* Color del handle del scroll */
+    min-height: 20px;
+    border-radius: 5px;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0px; /* Ocultar las flechas */
+}
+
+QScrollBar:horizontal {
+    border: none;
+    background-color: #2c3e50;
+    height: 10px;
+    margin: 0px 0px 0px 0px;
+}
+
+QScrollBar::handle:horizontal {
+    background-color: #5d8aa8;
+    min-width: 20px;
+    border-radius: 5px;
+}
+
+QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
+    width: 0px;
+}
+
+/* === ESTILOS PARA WIDGETS ADICIONALES (que podrías añadir) === */
+QPushButton {
+    background-color: #3498db; /* Azul */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #2980b9; /* Azul más oscuro */
+}
+
+QPushButton:pressed {
+    background-color: #1f618d;
+}
+
+QTableView {
+    background-color: #34495e;
+    color: #ecf0f1;
+    border: 1px solid #4a627a;
+    gridline-color: #4a627a;
+}
+
+QHeaderView::section {
+    background-color: #4a627a;
+    color: white;
+    padding: 5px;
+    border: 1px solid #2c3e50;
+    font-weight: bold;
+}

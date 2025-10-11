@@ -1,4 +1,5 @@
 import sys
+import os
 from PyQt6.QtWidgets import QApplication, QMainWindow
 
 from ..generated.Ui_main_window import Ui_MainWindow
@@ -6,19 +7,26 @@ from ..generated.Ui_main_window import Ui_MainWindow
 class FinancialTerminalApp(QMainWindow):
     def __init__(self):
         super().__init__()
-
-        # 1. Crea una instancia de la UI generada
         self.ui = Ui_MainWindow()
-        
-        # 2. Carga la interfaz en la ventana actual (self)
         self.ui.setupUi(self)
-        
-        style_sheet_path = "..assets/styles/style.qss"
-        self.load_style_sheet(style_sheet_path)
-        
-        # 3. Puedes añadir personalizaciones adicionales aquí
-        self.setWindowTitle("FinCore Terminal")
 
+        self._init_ui()
+        self._connect_signals()
+
+    def _init_ui(self):
+        """Inicializa la configuración de la interfaz de usuario."""
+        self.setWindowTitle("FinCore Terminal")
+        
+        # Cargar hoja de estilos de forma robusta
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        style_sheet_path = os.path.join(script_dir, "..", "..", "assets", "styles", "style.qss")
+        self.load_style_sheet(style_sheet_path)
+    
+    def _connect_signals(self):
+        """Conecta las señales de los widgets a los slots."""
+        # Ejemplo: Conectar un cambio en el campo de búsqueda a una función
+        # self.ui.searchLineEdit.textChanged.connect(self.on_search_text_changed)
+        pass
 
     def load_style_sheet(self, path):
         """
@@ -34,10 +42,6 @@ class FinancialTerminalApp(QMainWindow):
         except Exception as e:
             print(f"Ocurrió un error al cargar los estilos: {e}")
 
-# --- Punto de entrada para ejecutar la aplicación ---
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    window = FinancialTerminalApp()
-    window.show()
-    sys.exit(app.exec())
+
+
 
