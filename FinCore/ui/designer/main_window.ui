@@ -29,16 +29,6 @@
      </property>
     </layout>
    </widget>
-   <widget class="QTextBrowser" name="textBrowser">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>10</y>
-      <width>721</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QWidget" name="gridLayoutWidget_2">
     <property name="geometry">
      <rect>
@@ -99,6 +89,9 @@
      <item row="0" column="1">
       <widget class="QLineEdit" name="searchLineEdit"/>
      </item>
+     <item row="1" column="0">
+      <layout class="QHBoxLayout" name="StockListLayout"/>
+     </item>
     </layout>
    </widget>
    <widget class="QWidget" name="gridLayoutWidget_4">
@@ -111,6 +104,16 @@
      </rect>
     </property>
     <layout class="QGridLayout" name="ExtraDataLayout"/>
+   </widget>
+   <widget class="QLineEdit" name="MainSearchLine">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>10</y>
+      <width>711</width>
+      <height>22</height>
+     </rect>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'main_window.ui'
+# Form implementation generated from reading ui file 'FinCore/ui/designer/main_window.ui'
 #
 # Created by: PyQt6 UI code generator 6.9.0
 #
@@ -21,9 +21,6 @@ class Ui_MainWindow(object):
         self.MainLayout = QtWidgets.QGridLayout(self.gridLayoutWidget)
         self.MainLayout.setContentsMargins(1, 0, 0, 0)
         self.MainLayout.setObjectName("MainLayout")
-        self.textBrowser = QtWidgets.QTextBrowser(parent=self.centralwidget)
-        self.textBrowser.setGeometry(QtCore.QRect(180, 10, 721, 31))
-        self.textBrowser.setObjectName("textBrowser")
         self.gridLayoutWidget_2 = QtWidgets.QWidget(parent=self.centralwidget)
         self.gridLayoutWidget_2.setGeometry(QtCore.QRect(179, 60, 711, 80))
         self.gridLayoutWidget_2.setObjectName("gridLayoutWidget_2")
@@ -56,12 +53,18 @@ class Ui_MainWindow(object):
         self.searchLineEdit = QtWidgets.QLineEdit(parent=self.formLayoutWidget)
         self.searchLineEdit.setObjectName("searchLineEdit")
         self.StockLayout.setWidget(0, QtWidgets.QFormLayout.ItemRole.FieldRole, self.searchLineEdit)
+        self.StockListLayout = QtWidgets.QHBoxLayout()
+        self.StockListLayout.setObjectName("StockListLayout")
+        self.StockLayout.setLayout(1, QtWidgets.QFormLayout.ItemRole.LabelRole, self.StockListLayout)
         self.gridLayoutWidget_4 = QtWidgets.QWidget(parent=self.centralwidget)
         self.gridLayoutWidget_4.setGeometry(QtCore.QRect(10, 630, 1051, 80))
         self.gridLayoutWidget_4.setObjectName("gridLayoutWidget_4")
         self.ExtraDataLayout = QtWidgets.QGridLayout(self.gridLayoutWidget_4)
         self.ExtraDataLayout.setContentsMargins(0, 0, 0, 0)
         self.ExtraDataLayout.setObjectName("ExtraDataLayout")
+        self.MainSearchLine = QtWidgets.QLineEdit(parent=self.centralwidget)
+        self.MainSearchLine.setGeometry(QtCore.QRect(180, 10, 711, 22))
+        self.MainSearchLine.setObjectName("MainSearchLine")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1094, 26))
@@ -78,13 +81,3 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.searchLabel.setText(_translate("MainWindow", "Search"))
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec())
