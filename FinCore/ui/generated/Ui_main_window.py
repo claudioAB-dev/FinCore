@@ -39,6 +39,9 @@ class Ui_MainWindow(object):
         self.scrollAreaWidgetContents_2 = QtWidgets.QWidget()
         self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 156, 557))
         self.scrollAreaWidgetContents_2.setObjectName("scrollAreaWidgetContents_2")
+        self.miPortafolioButton = QtWidgets.QPushButton(parent=self.scrollAreaWidgetContents_2)
+        self.miPortafolioButton.setGeometry(QtCore.QRect(0, 0, 141, 51))
+        self.miPortafolioButton.setObjectName("miPortafolioButton")
         self.scrollArea.setWidget(self.scrollAreaWidgetContents_2)
         self.ToolsLayout.addWidget(self.scrollArea, 0, 0, 1, 1)
         self.formLayoutWidget = QtWidgets.QWidget(parent=self.centralwidget)
@@ -80,4 +83,5 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.miPortafolioButton.setText(_translate("MainWindow", "Mi Portafolio."))
         self.searchLabel.setText(_translate("MainWindow", "Search"))
